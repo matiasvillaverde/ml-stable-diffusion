@@ -12,13 +12,9 @@ let package = Package(
     products: [
         .library(
             name: "StableDiffusion",
-            targets: ["StableDiffusion"]),
-        .executable(
-            name: "StableDiffusionSample",
-            targets: ["StableDiffusionCLI"])
+            targets: ["StableDiffusion"])
     ],
     dependencies: [
-        .package(url: "https://github.com/apple/swift-argument-parser.git", from: "1.2.3"),
         .package(url: "https://github.com/huggingface/swift-transformers", from: "0.1.13"),
     ],
     targets: [
@@ -28,12 +24,6 @@ let package = Package(
                 .product(name: "Transformers", package: "swift-transformers"),
             ],
             path: "swift/StableDiffusion"),
-        .executableTarget(
-            name: "StableDiffusionCLI",
-            dependencies: [
-                "StableDiffusion",
-                .product(name: "ArgumentParser", package: "swift-argument-parser")],
-            path: "swift/StableDiffusionCLI"),
         .testTarget(
             name: "StableDiffusionTests",
             dependencies: ["StableDiffusion"],
