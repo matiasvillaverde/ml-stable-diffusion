@@ -4,33 +4,25 @@
 import PackageDescription
 
 let package = Package(
-    name: "stable-diffusion",
+    name: "stable-diffusion-old",
     platforms: [
         .macOS(.v13),
         .iOS(.v16),
     ],
     products: [
         .library(
-            name: "StableDiffusion",
-            targets: ["StableDiffusion"])
+            name: "StableDiffusionOld",
+            targets: ["StableDiffusionOld"])
     ],
     dependencies: [
         .package(url: "https://github.com/huggingface/swift-transformers", from: "0.1.13"),
     ],
     targets: [
         .target(
-            name: "StableDiffusion",
+            name: "StableDiffusionOld",
             dependencies:  [
                 .product(name: "Transformers", package: "swift-transformers"),
             ],
-            path: "swift/StableDiffusion"),
-        .testTarget(
-            name: "StableDiffusionTests",
-            dependencies: ["StableDiffusion"],
-            path: "swift/StableDiffusionTests",
-            resources: [
-                .copy("Resources/vocab.json"),
-                .copy("Resources/merges.txt")
-            ]),
+            path: "swift/StableDiffusion")
     ]
 )
